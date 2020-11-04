@@ -1,8 +1,8 @@
 <template>
   <div class="Wrapper">
-    <p>Header 1</p>
+    <p>{{ data.header }}</p>
     <div class="Wrapper__Content">
-      <LinkDesc />
+      <LinkDesc :description="data.description" />
     </div>
   </div>
 </template>
@@ -12,6 +12,9 @@ import LinkDesc from './LinkDesc'
 export default {
   components: {
     LinkDesc,
+  },
+  props: {
+    data: Object,
   },
 }
 </script>

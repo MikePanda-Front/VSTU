@@ -1,29 +1,17 @@
 <template>
   <div class="Wrapper">
-    <h1>Краткая ифнормация о категоряих</h1>
+    <h1>{{ description.shortInfo }}</h1>
     <div class="Wrapper__Content">
-      <div class="Wrapper__Content__Links">
-        <h2>Загаловок</h2>
+      <div
+        class="Wrapper__Content__Links"
+        v-for="info of description.info"
+        :key="info.id"
+      >
+        <h2>{{ info.header }}</h2>
         <ul>
-          <li>Название</li>
-          <li>Название</li>
-          <li>Название</li>
-        </ul>
-      </div>
-      <div class="Wrapper__Content__Links">
-        <h2>Загаловок</h2>
-        <ul>
-          <li>Название</li>
-          <li>Название</li>
-          <li>Название</li>
-        </ul>
-      </div>
-      <div class="Wrapper__Content__Links">
-        <h2>Загаловок</h2>
-        <ul>
-          <li>Название</li>
-          <li>Название</li>
-          <li>Название</li>
+          <li v-for="(item, i) of info.list" :key="`${item}-${i}`">
+            {{ item }}
+          </li>
         </ul>
       </div>
     </div>
@@ -31,7 +19,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    description: Object,
+  },
+}
 </script>
 
 <style lang="scss" scoped>
