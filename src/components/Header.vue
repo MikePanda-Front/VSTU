@@ -1,18 +1,17 @@
 <template>
   <el-menu :router="true" class="el-menu-demo" mode="horizontal">
-  <el-menu-item index="/news" :route="{ name: 'News'}">Новости</el-menu-item>
-  <el-menu-item index="2">Расписание</el-menu-item>
-  <el-menu-item index="3">Документы</el-menu-item>
-  <el-menu-item index="4">Преподаватели</el-menu-item>
-</el-menu>
+    <el-menu-item index="/home" :route="{ name: 'Home' }">Главная</el-menu-item>
+    <el-menu-item index="/news" :route="{ name: 'News' }">Новости</el-menu-item>
+    <el-menu-item index="2">Расписание</el-menu-item>
+    <el-menu-item index="/documents" :route="{ name: 'Documents' }"
+      >Документы</el-menu-item
+    >
+    <el-menu-item index="4">Преподаватели</el-menu-item>
+  </el-menu>
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
-<style>
-
-</style>
+<style></style>

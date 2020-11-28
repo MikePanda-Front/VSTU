@@ -1,36 +1,29 @@
 <template>
   <div class="news-wrapper">
-    <Content />
-    <div class="events">
-      <Event />
-      <Event />
-      <Event />
-    </div>
+    <Item />
+    <Item />
+    <Item />
+    <Item />
+    <Item />
+    <Item />
+    <Item />
   </div>
 </template>
 
 <script>
-import Event from '../components/News/Event'
-import Content from '../components/News/Content'
-
+import Item from '../components/News/Item'
 export default {
   components: {
-    Event,
-    Content,
+    Item,
   },
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .news-wrapper {
-  display: flex;
-
+  width: 1200px;
   margin: 30px auto;
-  padding: 0 50px;
-  max-width: 1200px;
-}
-
-.events {
-  margin-left: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 </style>
