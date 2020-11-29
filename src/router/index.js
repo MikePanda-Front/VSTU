@@ -2,6 +2,7 @@ import VueRouter from 'vue-router'
 import Home from '../pages/Home'
 import Documents from '../pages/Documents'
 import News from '../pages/News'
+import NewsItem from '../pages/NewsItem'
 
 export default new VueRouter({
   mode: 'history',
@@ -15,6 +16,11 @@ export default new VueRouter({
       path: 'news',
       name: 'News',
       component: News,
+    },
+    {
+      path: 'news/:id',
+      name: 'NewsItem',
+      component: NewsItem,
     },
     {
       path: 'documents',
