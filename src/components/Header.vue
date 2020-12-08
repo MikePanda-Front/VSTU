@@ -7,6 +7,8 @@
       >Документы</el-menu-item
     >
     <el-menu-item index="4">Преподаватели</el-menu-item>
+    <el-menu-item index="/auth" :route="{ name: 'Auth' }">Регистрация</el-menu-item>
+    <el-menu-item index="/login" :route="{ name: 'Login' }">Логин</el-menu-item>
   </el-menu>
 </template>
 
