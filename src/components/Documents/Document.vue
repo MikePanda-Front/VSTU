@@ -49,6 +49,10 @@ export default {
   padding: 10px 0;
 
   border-bottom: 1px solid black;
+
+  & p {
+    margin-bottom: 0;
+  }
 }
 
 .document-data {

@@ -2,7 +2,7 @@
   <div class="container mt-4">
     <div class="col-sm-4 mx-auto">
       <h2 class="reg-title">Авторизация</h2>
-      <form @submit="userRegister" novalidate>
+      <form @submit.prevent="userRegister" novalidate>
         <div v-if="regMessage" class="alert alert-success" role="alert">
           Вы успешно зарегистрировались!
         </div>
@@ -100,26 +100,30 @@ export default {
       }
     },
     userRegister() {
-      console.group()
-      console.log('Email: ' + this.formReg.email)
-      console.log('Пароль: ' + this.formReg.password)
-      console.groupEnd()
+      // this.axios({
+      //   url: `https://jsonplaceholder.typicode.com/posts/1`,
+      //   method: 'GET',
+      //   responseType: 'blob',
+      //   headers: { 'Access-Control-Allow-Origin': '*' },
+      // }).then(response => {
+      //   console.log('response', response)
+      // })
       this.reset()
     },
     reset() {
-      // сбросить шаг и показать сообщение о регистрации
       this.step = 1
       this.regMessage = true
-      // убрать сообщение о регистрации
       setTimeout(() => {
         this.regMessage = false
+      }, 1500)
+      setTimeout(() => {
+        this.$store.commit('setUser', {
+          name: 'Student',
+          email: 'mail@mail.com',
+          status: 'student',
+        })
+        this.$router.push({ name: 'Home' })
       }, 3000)
-      // сбросить все поля
-      for (let input in this.formReg) {
-        this.formReg[input] = ''
-      }
-      // сбросить валидацию
-      this.$v.$reset()
     },
   },
   validations: {

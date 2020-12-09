@@ -80,57 +80,7 @@
 
         <transition name="slide-fade">
           <div v-show="step === 2">
-            <div class="form-group">
-              <label for="country">Страна</label>
-
-              <input
-                @blur="$v.formReg.country.$touch()"
-                :class="status($v.formReg.country)"
-                v-model.trim="formReg.country"
-                type="text"
-                class="form-control"
-                id="country"
-              />
-
-              <div class="invalid-feedback" v-if="!$v.formReg.country.alpha">
-                {{ alphaText }}
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="city">Город</label>
-
-              <input
-                @blur="$v.formReg.city.$touch()"
-                :class="status($v.formReg.city)"
-                v-model.trim="formReg.city"
-                type="text"
-                class="form-control"
-                id="city"
-              />
-
-              <div class="invalid-feedback" v-if="!$v.formReg.city.alpha">
-                {{ alphaText }}
-              </div>
-            </div>
-
-            <button @click="step--" type="button" class="btn btn-light mr-2">
-              Назад
-            </button>
-            <button
-              @click="step++"
-              :disabled="disabledBtn2"
-              type="button"
-              class="btn btn-primary"
-            >
-              Следующий шаг
-            </button>
-          </div>
-        </transition>
-
-        <transition name="slide-fade">
-          <div v-show="step === 3">
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="year">Год рождения</label>
 
               <select
@@ -152,22 +102,40 @@
               <div class="invalid-feedback" v-if="!$v.formReg.year.required">
                 {{ reqText }}
               </div>
+            </div> -->
+
+            <div class="form-group">
+              <label for="facultet">Факультет</label>
+
+              <input
+                @blur="$v.formReg.facultet.$touch()"
+                :class="status($v.formReg.facultet)"
+                v-model.trim="formReg.facultet"
+                type="text"
+                class="form-control"
+                id="facultet"
+                placeholder="Например, ФИТКБ"
+              />
+
+              <div class="invalid-feedback" v-if="!$v.formReg.facultet.alpha">
+                {{ alphaText }}
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="career">Профессия</label>
+              <label for="group">Группа</label>
 
               <input
-                @blur="$v.formReg.career.$touch()"
-                :class="status($v.formReg.career)"
-                v-model.trim="formReg.career"
+                @blur="$v.formReg.group.$touch()"
+                :class="status($v.formReg.group)"
+                v-model.trim="formReg.group"
                 type="text"
                 class="form-control"
-                id="career"
-                placeholder="Например, студент"
+                id="group"
+                placeholder="Например, М-РИС-151"
               />
 
-              <div class="invalid-feedback" v-if="!$v.formReg.career.alpha">
+              <div class="invalid-feedback" v-if="!$v.formReg.group.alpha">
                 {{ alphaText }}
               </div>
             </div>
@@ -259,10 +227,8 @@ export default {
         email: '',
         name: '',
         surname: '',
-        country: '',
-        city: '',
-        year: '',
-        career: '',
+        facultet: '',
+        group: '',
         password: '',
         passwordConfirm: '',
       },
@@ -276,13 +242,10 @@ export default {
         this.$v.formReg.email.$invalid
       )
     },
-    disabledBtn2() {
-      return this.$v.formReg.country.$invalid || this.$v.formReg.city.$invalid
-    },
     disabledBtnFinish() {
       return (
-        this.$v.formReg.year.$invalid ||
-        this.$v.formReg.career.$invalid ||
+        this.$v.formReg.facultet.$invalid ||
+        this.$v.formReg.group.$invalid ||
         this.$v.formReg.password.$invalid ||
         this.$v.formReg.passwordConfirm.$invalid
       )
@@ -296,33 +259,22 @@ export default {
       }
     },
     userRegister() {
-      console.group()
-      console.log('Вы успешно зарегистрированны!')
-      console.log('Ваше имя: ' + this.formReg.name)
-      console.log('Ваша фамилия: ' + this.formReg.surname)
-      console.log('Email: ' + this.formReg.email)
-      console.log('Страна: ' + this.formReg.country)
-      console.log('Город: ' + this.formReg.city)
-      console.log('Год рождения: ' + this.formReg.year)
-      console.log('Профессия: ' + this.formReg.career)
-      console.log('Пароль: ' + this.formReg.password)
-      console.groupEnd()
       this.reset()
     },
     reset() {
-      // сбросить шаг и показать сообщение о регистрации
       this.step = 1
       this.regMessage = true
-      // убрать сообщение о регистрации
       setTimeout(() => {
         this.regMessage = false
       }, 3000)
-      // сбросить все поля
-      for (let input in this.formReg) {
-        this.formReg[input] = ''
-      }
-      // сбросить валидацию
-      this.$v.$reset()
+      setTimeout(() => {
+        this.$store.commit('setUser', {
+          name: this.formReg.name,
+          email: this.formReg.name,
+          status: 'student',
+        })
+        this.$router.push({ name: 'Home' })
+      }, 3000)
     },
   },
   validations: {
@@ -339,16 +291,10 @@ export default {
         required,
         alpha,
       },
-      country: {
+      facultet: {
         alpha,
       },
-      city: {
-        alpha,
-      },
-      year: {
-        required,
-      },
-      career: {
+      group: {
         alpha,
       },
       password: {

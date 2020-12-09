@@ -1,7 +1,17 @@
 <template>
   <div class="documents-wrapper">
     <div>
-      <p>Категория</p>
+      <h4>Категория 1</h4>
+      <Document />
+      <Document />
+      <Document />
+      <Document />
+    </div>
+    <div>
+      <h4>Категория 2</h4>
+      <Document />
+      <Document />
+      <Document />
       <Document />
     </div>
   </div>
@@ -21,5 +31,9 @@ export default {
 .documents-wrapper {
   width: 800px;
   margin: auto;
+}
+
+h4 {
+  margin: 20px 0;
 }
 </style>
