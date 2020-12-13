@@ -5,6 +5,7 @@ import DocumentsAdmin from '../pages/DocumentsAdmin'
 import Login from '../pages/Login'
 import Auth from '../pages/Auth'
 import News from '../pages/News'
+import NewsAdmin from '../pages/NewsAdmin'
 import NewsItem from '../pages/NewsItem'
 
 export default new VueRouter({
@@ -19,6 +20,11 @@ export default new VueRouter({
       path: 'news',
       name: 'News',
       component: News,
+    },
+    {
+      path: 'newsAdmin',
+      name: 'NewsAdmin',
+      component: NewsAdmin,
     },
     {
       path: 'news/:id',

@@ -29,7 +29,7 @@
       <el-menu-item index="/home" :route="{ name: 'Home' }"
         >Главная</el-menu-item
       >
-      <el-menu-item index="/news" :route="{ name: 'News' }"
+      <el-menu-item index="/newsAdmin" :route="{ name: 'NewsAdmin' }"
         >Новости</el-menu-item
       >
       <el-menu-item index="2">Расписание</el-menu-item>
