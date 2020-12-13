@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router'
 import Home from '../pages/Home'
 import Documents from '../pages/Documents'
+import DocumentsAdmin from '../pages/DocumentsAdmin'
 import Login from '../pages/Login'
 import Auth from '../pages/Auth'
 import News from '../pages/News'
@@ -28,6 +29,11 @@ export default new VueRouter({
       path: 'documents',
       name: 'Documents',
       component: Documents,
+    },
+    {
+      path: 'documentsAdmin',
+      name: 'DocumentsAdmin',
+      component: DocumentsAdmin,
     },
     {
       path: 'login',

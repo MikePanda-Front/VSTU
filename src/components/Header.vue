@@ -22,6 +22,26 @@
 
     <el-menu
       :router="true"
+      v-if="getUser.status === 'admin'"
+      class="el-menu-demo"
+      mode="horizontal"
+    >
+      <el-menu-item index="/home" :route="{ name: 'Home' }"
+        >Главная</el-menu-item
+      >
+      <el-menu-item index="/news" :route="{ name: 'News' }"
+        >Новости</el-menu-item
+      >
+      <el-menu-item index="2">Расписание</el-menu-item>
+      <el-menu-item index="/documentsAdmin" :route="{ name: 'DocumentsAdmin' }"
+        >Документы</el-menu-item
+      >
+      <el-menu-item index="4">Преподаватели</el-menu-item>
+      <p class="user">{{ getUser.name }}</p>
+    </el-menu>
+
+    <el-menu
+      :router="true"
       v-if="getUser.status === ''"
       class="el-menu-demo"
       mode="horizontal"

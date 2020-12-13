@@ -3,7 +3,7 @@ export default {
     user: {
       name: '',
       email: '',
-      status: '',
+      status: 'admin',
     },
   },
   mutations: {
