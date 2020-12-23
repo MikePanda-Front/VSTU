@@ -1,13 +1,13 @@
 <template>
   <div class="documnet-wrapper">
-    <p>Название документа</p>
+    <p>{{ data.name }}</p>
     <div class="document-data">
-      <p>22.11.2020</p>
-      <p>145kb</p>
+      <p>{{ data.date }}</p>
+      <p>{{ data.size / 1000 }} kb</p>
       <img
         src="../../assets/icons/download-icon.svg"
         alt="download"
-        @click="download"
+        @click="download(data.path)"
       />
     </div>
   </div>
@@ -15,15 +15,18 @@
 
 <script>
 export default {
+  props: {
+    data: Object,
+  },
   data() {
     return {
       url: '../Header.vue',
     }
   },
   methods: {
-    download() {
+    download(path) {
       this.axios({
-        url: 'http://localhost:8080/files/index.html',
+        url: path,
         method: 'GET',
         responseType: 'blob',
       }).then(response => {
@@ -49,6 +52,11 @@ export default {
   padding: 10px 0;
 
   border-bottom: 1px solid black;
+
+  & p {
+    margin-bottom: 0;
+    font-size: 14px;
+  }
 }
 
 .document-data {
@@ -56,6 +64,7 @@ export default {
   align-items: center;
   & p {
     margin-right: 20px;
+    font-size: 14px;
   }
 
   & img {
